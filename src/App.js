@@ -1,25 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import Overview from './components/Overview'
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  state = {
+    inputField: '',
+    tasks: [
+      "fukcit"
+    ]
+  }
+
+  addTask = (e, task) => {
+    e.preventDefault()
+    this.setState({
+      todos: this.state.tasks.push(task)
+    })
+  }
+
+  updateField = (e) => {
+    this.setState({inputField: e.target.value})
+  }
+
+  render() {
+    
+    return (
+      <div className="App">
+        
+        <form onSubmit={this.addTask}>
+          <input 
+            type="text"
+            name="task"
+            placeholder="new task"
+            value={this.state.inputField}
+            onChange={this.updateField}
+          />
+          
+          <input 
+            type="submit"
+            value="add it"            
+          /> 
+
+        </form>
+        <Overview tasks={this.state.tasks}/>
+      </div>
+    );
+  }
 }
 
 export default App;
