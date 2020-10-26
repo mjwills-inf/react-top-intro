@@ -10,10 +10,10 @@ class App extends Component {
     ]
   }
 
-  addTask = (e, task) => {
+  addTask = (e) => {
     e.preventDefault()
     this.setState({
-      todos: this.state.tasks.push(task)
+      tasks: [...this.state.tasks, this.state.inputField]
     })
   }
 
@@ -33,13 +33,11 @@ class App extends Component {
             placeholder="new task"
             value={this.state.inputField}
             onChange={this.updateField}
-          />
-          
+          />          
           <input 
             type="submit"
             value="add it"            
-          /> 
-
+          />
         </form>
         <Overview tasks={this.state.tasks}/>
       </div>

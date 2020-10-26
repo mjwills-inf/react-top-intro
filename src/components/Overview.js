@@ -2,14 +2,11 @@ import React, { Component } from 'react'
 
 export default class Overview extends Component {
 
-  
-    
   render() {
-    // console.log(this.props.tasks)
-    return (
-      <div>
-        
-      </div>
-    )
+    
+    return this.props.tasks.map((item) => (
+      <li key={this.props.tasks.indexOf({item})}>{item}</li>      
+      
+    ))
   }
 }
